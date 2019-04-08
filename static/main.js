@@ -39,13 +39,14 @@ class Profile {
       callback(err, data);
     });
   }
+}
 
-  getStocks(callback) {
-    return ApiConnector.getStocks((err, data) => {
-      console.log(`Getting stock info ${data}`);
-      callback(err, data);
-    });
-  }
+function getStocks(callback) {
+     return ApiConnector.getStocks((err,data)=>{
+       console.log(data);
+       console.log('Getting stocks info');
+       callback(err,data);
+     });
 }
 
 function main() {
@@ -72,7 +73,7 @@ function main() {
               Igor.convertMoney({ fromCurrency: 'EUR', targetCurrency: 'NETCOIN', targetAmount: 36000 }, (err, data) => {
                 if (err) {
                   console.error('Error during converting money for Igor');
-                } else {
+                } else {                  
                   console.log(`Converted money`);
                   const Alex =  new Profile({
                     username: 'alex',
@@ -101,6 +102,6 @@ function main() {
       });
     }
   });
+ }  
 
-}  
 main();
